@@ -1,0 +1,159 @@
+# Theme: CathexiS
+# Description: Simple, minimal, distraction free foundation for building your desktop experience...
+# Author: Samir Kahvedzic < akirapowered@gmail.com >
+# Web: http://samirkahvedzic.deviantart.com
+
+
+##############################################
+# Settings
+##############################################
+
+background yes
+
+# Use Xft?
+use_xft yes
+xftfont Coda:size=9
+xftalpha 1
+
+# Update interval in seconds
+update_interval 1.0
+
+# This is the number of times Conky will update before quitting.
+# Set to zero to run forever.
+total_run_times 0
+
+# Create own window instead of using desktop (required in nautilus)
+own_window yes
+own_window_transparent yes
+own_window_type normal
+
+#own_window_argb_visual yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+# Use double buffering (reduces flicker, may not work for everyone)
+double_buffer yes
+
+# Minimum size of text area
+minimum_size 220 200
+maximum_width 240
+
+# Draw shades?
+draw_shades no
+
+# Draw outlines?
+draw_outline no
+
+# Draw borders around text
+draw_borders no
+
+# border width
+border_width 1
+
+# border margins
+#border_margin 5
+
+# Stippled borders?
+stippled_borders 0
+
+# Default colors and also border colors
+default_color DA7817
+own_window_colour DA7817
+default_shade_color DA7817
+default_outline_color DA7817
+
+# Text alignment, other possible values are commented
+#alignment top_left
+alignment top_right
+#alignment bottom_left
+#alignment bottom_right
+
+# Gap between borders of screen and text
+# same thing as passing -x at command line
+gap_x 30
+gap_y 40
+
+# Subtract file system buffers from used memory?
+no_buffers yes
+
+# set to yes if you want all text to be in uppercase
+uppercase no
+
+# number of cpu samples to average
+# set to 1 to disable averaging
+cpu_avg_samples 2
+
+# number of net samples to average
+# set to 1 to disable averaging
+net_avg_samples 2
+
+# Force UTF8? note that UTF8 support required XFT
+override_utf8_locale yes
+
+# Add spaces to keep things from moving about?  This only affects certain objects.
+use_spacer right
+
+default_bar_size 220 3
+draw_graph_borders yes
+
+##############################################
+#  Output
+##############################################
+TEXT
+
+
+
+
+
+
+
+mrbongo1981
+${time  %A}
+${time %A%D} $alignc${voffset -35}${font Coda:size=62}${time %k:%M}${font}
+${voffset -5}Sopron
+
+${voffset -14}${hr}
+
+${color DA7817}Kernel:${color}$alignr$kernel
+${color DA7817}UpTime:${color}$alignr$uptime  
+
+P R O C E S S O R
+${hr}
+${color DA7817}Cpu1:${color DA7817}${offset 30}${cpu cpu1}%
+${color DA7817}${cpugraph cpu1 20,85 DA7817 DA7817}
+${voffset -54}${offset 112}${color DA7817}Cpu2:${color}${offset 30}${cpu cpu2}%
+$alignr${color DA7817}${cpugraph cpu2 20,85 DA7817 DA7817}
+${color DA7817}Cpu3:${color}${offset 30}${cpu cpu2}%
+${color DA7817}${cpugraph cpu2 20,85 DA7817 DA7817}
+${voffset -54}${offset 112}${color DA7817}Cpu4:${color}${offset 30}${cpu cpu3}%
+$alignr${color DA7817}${cpugraph cpu3 20,85 DA7817 DA7817} 
+
+${color DA7817}Temp:${color}${offset 30}${color DA7817}$acpitemp°C${color}
+${voffset -20}${offset 125}${color DA7817}Battery:${color}${offset 28}${color DA7817}${battery_percent BAT1}%${color}
+
+M E M O R Y
+${hr}
+${color DA7817}Ram:$alignr${color FFB100}$mem${color} / ${color DA7817}$memmax${color}
+${color DA7817}${membar}${color}
+
+HDD
+${hr}
+${color DA7817}Root:$alignr${color DA7817}${fs_used /}${color} / ${color DA7817}${fs_free /}
+${color DA7817}${fs_bar /}${color}
+${color DA7817}Data:$alignr${color DA7817}${fs_used /media/data}${color} / ${color DA7817}${fs_free /media/data}
+${color DA7817}${fs_bar /media/data}${color}
+
+NETWORK
+${hr}
+${color DA7817}Up:${color} ${upspeed enp3s0}
+${color DA7817}${upspeedgraph enp3s0 20,85 DA7817 DA7817}
+${color DA7817}Total:${color} ${totalup enp3s0}
+
+${voffset -75}${offset 135}${color DA7817}Down:${color} ${downspeed enp3s0}
+$alignr${color DA7817}${downspeedgraph enp3s0 20,85 DA7817 DA7817}
+$alignr${color DA7817}Total:${color} ${totaldown enp3s0}
+
+${color DA7817}Mail:${color}${offset 30}${color DA7817}${execpi 300 python ~/.scripts/gmail.py}${color}
+${voffset -20}${offset 135}${color DA7817}Updates:${color}${offset 30}${color DA7817}${execi 6000 aptitude search "~U" | wc -l}${color}
+Top
+Post Reply  
+ 2 posts • Page 1 of 1
